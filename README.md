@@ -1,46 +1,82 @@
-# Getting Started with Create React App
+- 参考文献
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  - [【React+TypeScript】Netflixのクローンを作るチュートリアル](https://zenn.dev/gunners6518/books/4c4672f32dd100)
 
-## Available Scripts
+  - [（初心者向け）Firebase HostingへReactプロジェクトを公開する手順](https://qiita.com/junara/items/74801923ca108b328b26)
 
-In the project directory, you can run:
+- TMDB の APIKey を設定
 
-### `npm start`
+  .env.sample を参考に用意
+  ```
+  REACT_APP_TMDB_API_KEY=xxx
+  ```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Firebase CLI をインストール (未インストールの場合)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+  ```
+  > npm install -g firebase-tools
+  ```
 
-### `npm test`
+- Firebase にログイン
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  ```
+  > firebase login
 
-### `npm run build`
+  ? Allow Firebase to collect CLI usage and error reporting information?
+  No
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  Visit this URL on this device to log in:
+  https://accounts.google.com/o/oauth2/auth?...
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  Waiting for authentication...
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  +  Success! Logged in as example@gmail.com
+  ```
 
-### `npm run eject`
+- Firebase プロジェクトの初期化 (初回のみ)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  ```
+  >firebase init
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  ? Are you ready to proceed?
+  Yes
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  ? Which Firebase features do you want to set up for this directory? Press Space to select features, then Enter to confirm your choices.
+  Hosting: Con
+  figure files for Firebase Hosting and (optionally) set up GitHub Action deploys
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  ? Please select an option:
+  Use an existing project
 
-## Learn More
+  ? Select a default Firebase project for this directory:
+  XXX
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  ? What do you want to use as your public directory?
+  build
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  ? Configure as a single-page app (rewrite all urls to /index.html)?
+  Yes
+
+  ? Set up automatic builds and deploys with GitHub?
+  No
+
+  ? File public/index.html already exists. Overwrite?
+  No
+  ```
+
+- Firebase にデプロイ
+
+  ```
+  > yarn build
+
+  ...
+  Done in 47.38s.
+
+  > firebase deploy
+
+  ...
+
+  +  Deploy complete!
+
+  Project Console: https://console.firebase.google.com/project/XXX/overview
+  ```
